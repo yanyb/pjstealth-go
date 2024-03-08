@@ -1,10 +1,10 @@
 package main
 
 import (
-	pjstealthgo "pjstealth-go"
 	"time"
 
 	"github.com/playwright-community/playwright-go"
+	pjstealthgo "github.com/yanyb/pjstealth-go"
 )
 
 func main() {

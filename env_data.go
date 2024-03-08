@@ -1,7 +1,7 @@
 package pjstealth_go
 
 import (
-	"pjstealth-go/utils/random"
+	"github.com/yanyb/pjstealth-go/utils/random"
 )
 
 var cssInfo = KwArgs{

@@ -2,10 +2,11 @@ package pjstealth_go
 
 import (
 	"encoding/json"
-	"pjstealth-go/feature"
-	"pjstealth-go/utils/random"
 	"regexp"
 	"strings"
+
+	"github.com/yanyb/pjstealth-go/feature"
+	"github.com/yanyb/pjstealth-go/utils/random"
 )
 
 type KwArgs map[string]any

@@ -1,4 +1,4 @@
-module pjstealth-go
+module github.com/yanyb/pjstealth-go
 
 go 1.21.5
 
