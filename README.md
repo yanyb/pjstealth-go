@@ -1,6 +1,6 @@
 # pjstealth-go
 
-Translate https://github.com/winner-hue/pjstealth to golang
+convert https://github.com/winner-hue/pjstealth to golang
 
 ## Installation
 ```bash
