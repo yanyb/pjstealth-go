@@ -292,3 +292,45 @@ var envData = KwArgs{
 	"cssfeature":                     cssInfo,
 	"screen_color_depth":             random.Choice([]int{16, 24, 30}),
 }
+
+func envDataShuffle() {
+	envData["Win32"] = KwArgs{
+		"webgl_infos":  random.Choice(windowsWebgl),
+		"sys_platform": "Windows",
+	}
+
+	envData["canvasfeature"] = KwArgs{
+		"height": random.RandInt(-5, 5),
+		"width":  random.RandInt(-5, 5),
+		"r":      random.RandInt(-5, 5),
+		"g":      random.RandInt(-5, 5),
+		"b":      random.RandInt(-5, 5),
+		"a":      random.RandInt(-5, 5),
+	}
+
+	envData["videofeature"] = KwArgs{
+		"start_index":  265,
+		"random_value": random.Random(),
+	}
+
+	for _, tmpFontName := range fontNames {
+		fontsInfo[tmpFontName] = random.Choice(fontNames)
+	}
+	envData["fontsfeature"] = fontsInfo
+
+	envData["cssfeature"] = KwArgs{
+		"activeborder":      random.Choice([]string{"rgb(118, 118, 118)", "rgb(128, 128, 128)", "rgb(109, 109, 109)"}),
+		"activetext":        random.Choice([]string{"rgb(255, 102, 0)", "rgb(100, 102, 204)"}),
+		"graytext":          random.Choice([]string{"rgb(128, 104, 128)", "rgb(244, 109, 109)"}),
+		"highlight":         random.Choice([]string{"rgb(185, 213, 255)", "rgb(120, 109, 255)"}),
+		"highlighttext":     random.Choice([]string{"rgb(0, 0, 0)", "rgb(220, 220, 220)"}),
+		"linktext":          random.Choice([]string{"rgb(0, 230, 230)", "rgb(0, 120, 120)"}),
+		"threeddarkshadow":  random.Choice([]string{"rgb(118, 118, 118)", "rgb(35, 35, 35)"}),
+		"threedface":        random.Choice([]string{"rgb(210, 210, 210)", "rgb(240, 240, 240)"}),
+		"threedhighlight":   random.Choice([]string{"rgb(55, 55, 55)", "rgb(108, 108, 118)"}),
+		"threedlightshadow": random.Choice([]string{"rgb(118, 118, 118)", "rgb(80, 80, 80)"}),
+		"threedshadow":      random.Choice([]string{"rgb(118, 118, 118)", "rgb(49, 49, 49)"}),
+		"visitedtext":       random.Choice([]string{"rgb(85, 55, 139)", "rgb(0, 120, 204)"}),
+		"windowframe":       random.Choice([]string{"rgb(118, 118, 118)", "rgb(55, 55, 55)"}),
+	}
+}

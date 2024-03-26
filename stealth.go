@@ -383,6 +383,7 @@ func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArg
 }
 
 func (sc *StealthConfig) enabledScripts() []string {
+	envDataShuffle()
 	var scriptsContent []string
 
 	var buf strings.Builder
