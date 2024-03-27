@@ -265,35 +265,35 @@ var clientRectFeature = false
 
 var navigatorHardwareConcurrency = random.Choice([]int{8, 4, 16})
 
-var envData = KwArgs{
-	"Win32": KwArgs{
-		"webgl_infos":  random.Choice(windowsWebgl),
-		"sys_platform": "Windows",
-	},
-	"MacIntel": KwArgs{
-		"webgl_infos":  macWebgl,
-		"sys_platform": "macOS",
-	},
-	"Linux x86_64": KwArgs{
-		"webgl_infos":  random.Choice(windowsWebgl),
-		"sys_platform": "Windows",
-	},
-	"webrtc":                         webrtc,
-	"headless_check":                 headlessCheck,
-	"canvasfeature":                  canvasFeature,
-	"videofeature":                   videoFeature,
-	"clientrectfeature":              clientRectFeature,
-	"languages":                      []string{"en-US", "en"},
-	"language":                       "en-US",
-	"navigator_hardware_concurrency": navigatorHardwareConcurrency,
-	"device_memory":                  navigatorHardwareConcurrency,
-	"is_mobile":                      false,
-	"fontsfeature":                   fontsInfo,
-	"cssfeature":                     cssInfo,
-	"screen_color_depth":             random.Choice([]int{16, 24, 30}),
-}
+func NewEnvData() KwArgs {
+	var envData = KwArgs{
+		"Win32": KwArgs{
+			"webgl_infos":  random.Choice(windowsWebgl),
+			"sys_platform": "Windows",
+		},
+		"MacIntel": KwArgs{
+			"webgl_infos":  macWebgl,
+			"sys_platform": "macOS",
+		},
+		"Linux x86_64": KwArgs{
+			"webgl_infos":  random.Choice(windowsWebgl),
+			"sys_platform": "Windows",
+		},
+		"webrtc":                         webrtc,
+		"headless_check":                 headlessCheck,
+		"canvasfeature":                  canvasFeature,
+		"videofeature":                   videoFeature,
+		"clientrectfeature":              clientRectFeature,
+		"languages":                      []string{"en-US", "en"},
+		"language":                       "en-US",
+		"navigator_hardware_concurrency": navigatorHardwareConcurrency,
+		"device_memory":                  navigatorHardwareConcurrency,
+		"is_mobile":                      false,
+		"fontsfeature":                   fontsInfo,
+		"cssfeature":                     cssInfo,
+		"screen_color_depth":             random.Choice([]int{16, 24, 30}),
+	}
 
-func envDataShuffle() {
 	envData["Win32"] = KwArgs{
 		"webgl_infos":  random.Choice(windowsWebgl),
 		"sys_platform": "Windows",
@@ -333,4 +333,5 @@ func envDataShuffle() {
 		"visitedtext":       random.Choice([]string{"rgb(85, 55, 139)", "rgb(0, 120, 204)"}),
 		"windowframe":       random.Choice([]string{"rgb(118, 118, 118)", "rgb(55, 55, 55)"}),
 	}
+	return envData
 }

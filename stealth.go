@@ -100,6 +100,7 @@ func (kwArgs KwArgs) get(kInput string) any {
 }
 
 func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArgs KwArgs) *StealthConfig {
+	envData := NewEnvData()
 	sc := &StealthConfig{
 		vendor:               "Intel Inc.",
 		renderer:             "Intel Iris OpenGL Engine",
@@ -383,7 +384,6 @@ func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArg
 }
 
 func (sc *StealthConfig) enabledScripts() []string {
-	envDataShuffle()
 	var scriptsContent []string
 
 	var buf strings.Builder
