@@ -313,10 +313,11 @@ func NewEnvData() KwArgs {
 		"random_value": random.Random(),
 	}
 
+	tmpFontsInfo := KwArgs{}
 	for _, tmpFontName := range fontNames {
-		fontsInfo[tmpFontName] = random.Choice(fontNames)
+		tmpFontsInfo[tmpFontName] = random.Choice(fontNames)
 	}
-	envData["fontsfeature"] = fontsInfo
+	envData["fontsfeature"] = tmpFontsInfo
 
 	envData["cssfeature"] = KwArgs{
 		"activeborder":      random.Choice([]string{"rgb(118, 118, 118)", "rgb(128, 128, 128)", "rgb(109, 109, 109)"}),
