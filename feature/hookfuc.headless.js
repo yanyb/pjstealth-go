@@ -10,8 +10,6 @@ Object.getOwnPropertyNames = function (u) {
         return []
     } else if (u === AudioBuffer.prototype) {
         return []
-    } else if (u === MouseEvent.prototype) {
-        return []
     } else {
         return obj_get_own_p_n(u)
     }

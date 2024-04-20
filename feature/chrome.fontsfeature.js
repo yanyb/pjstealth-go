@@ -9,34 +9,8 @@ var rand = {
         return tmp[index];
     }
 };
-var hookFonts = function (originFamily) {
-    if (originFamily.includes("monospace")) {
-        let tmpFontFamily = originFamily.replace("monospace", "").replace(",", "").trim();
-        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
-        }
-    }
-
-    if (originFamily.includes("sans-serif")) {
-        let tmpFontFamily = originFamily.replace("sans-serif", "").replace(",", "").trim();
-        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
-        }
-    }
-
-    if (originFamily.includes("serif")) {
-        let tmpFontFamily = originFamily.replace("serif", "").replace(",", "").trim();
-        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
-        }
-    }
-    return originFamily;
-}
-
 Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
     get() {
-
-        this.style.fontFamily = hookFonts(this.style.fontFamily);
         let height = 500;
         try {
             height = Math.floor(this.getBoundingClientRect().height);
@@ -49,12 +23,10 @@ Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
 
 Object.defineProperty(HTMLElement.prototype, "offsetWidth", {
     get() {
-        // opts.fonts_start = opts.fonts_start + 1;
-        // if (opts.fonts_start < opts.fontsfeature.change_index.length && opts.fontsfeature.change_index[opts.fonts_start] !== 0) {
-        //     this.style.fontFamily = opts.fontsfeature.width[opts.fonts_start];
-        // }
-        this.style.fontFamily = hookFonts(this.style.fontFamily);
-
+        opts.fonts_start = opts.fonts_start + 1;
+        if (opts.fonts_start < opts.fontsfeature.change_index.length && opts.fontsfeature.change_index[opts.fonts_start] !== 0) {
+            this.style.fontFamily = opts.fontsfeature.width[opts.fonts_start];
+        }
         let width = 500;
         try {
             width = Math.floor(this.getBoundingClientRect().width);

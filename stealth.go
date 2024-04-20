@@ -44,7 +44,6 @@ var scripts = map[string]string{
 	"chrome_videofeature":           feature.FromFile("chrome.videofeature.js"),
 	"chrome_canvasfeature2":         feature.FromFile("chrome.canvasfeature2.js"),
 	"chrome_screen_colordepth":      feature.FromFile("chrome.screen.colordepth.js"),
-	"chrome_mouse_event":            feature.FromFile("chrome.mouseevent.js"),
 }
 
 type StealthConfig struct {
@@ -106,9 +105,6 @@ func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArg
 		renderer:             "Intel Iris OpenGL Engine",
 		navVendor:            "Google Inc.",
 		runOnInsecureOrigins: nil,
-		mouseDetail:          0,
-		mouseButton:          0,
-		mouseButtons:         1,
 		webDriver:            true,
 		webglVendor:          true,
 		navigatorPlugins:     true,
@@ -170,7 +166,7 @@ func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArg
 			}
 
 			if strings.Contains(strings.ToLower(sc.navigatorUserAgent), "windows") {
-				sc.navigatorPlatform = "Win32"
+				sc.navigatorPlatform = "Win64"
 				tmpWebglInfo := envData.get(sc.navigatorPlatform).(KwArgs).get("webgl_infos").([]string)
 				sc.vendor = tmpWebglInfo[0]
 				sc.renderer = tmpWebglInfo[1]
@@ -188,7 +184,7 @@ func NewStealthConfig(navigatorUserAgent string, navigatorPlatform string, kwArg
 		}
 
 		if sc.navigatorPlatform == "" {
-			sc.navigatorPlatform = random.Choice([]string{"MacIntel", "Win32"})
+			sc.navigatorPlatform = random.Choice([]string{"MacIntel", "Win64"})
 		}
 
 		sc.sysPlatform = envData.get(sc.navigatorPlatform).(KwArgs).get("sys_platform").(string)
@@ -480,9 +476,6 @@ func (sc *StealthConfig) enabledScripts() []string {
 	}
 	if sc.opts.get("screen_color_depth") != nil {
 		scriptsContent = append(scriptsContent, scripts["chrome_screen_colordepth"])
-	}
-	if sc.opts.get("mouse_event") != nil {
-		scriptsContent = append(scriptsContent, scripts["chrome_mouse_event"])
 	}
 	return scriptsContent
 }

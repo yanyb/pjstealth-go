@@ -267,7 +267,7 @@ var navigatorHardwareConcurrency = random.Choice([]int{8, 4, 16})
 
 func NewEnvData() KwArgs {
 	var envData = KwArgs{
-		"Win32": KwArgs{
+		"Win64": KwArgs{
 			"webgl_infos":  random.Choice(windowsWebgl),
 			"sys_platform": "Windows",
 		},
@@ -286,15 +286,15 @@ func NewEnvData() KwArgs {
 		"clientrectfeature":              clientRectFeature,
 		"languages":                      []string{"en-US", "en"},
 		"language":                       "en-US",
-		"navigator_hardware_concurrency": navigatorHardwareConcurrency,
-		"device_memory":                  navigatorHardwareConcurrency,
+		"navigator_hardware_concurrency": random.Choice([]int{8, 4, 16}),
+		"device_memory":                  random.Choice([]int{8, 4, 16}),
 		"is_mobile":                      false,
 		"fontsfeature":                   fontsInfo,
 		"cssfeature":                     cssInfo,
 		"screen_color_depth":             random.Choice([]int{16, 24, 30}),
 	}
 
-	envData["Win32"] = KwArgs{
+	envData["Win64"] = KwArgs{
 		"webgl_infos":  random.Choice(windowsWebgl),
 		"sys_platform": "Windows",
 	}
