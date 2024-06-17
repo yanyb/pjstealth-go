@@ -465,7 +465,7 @@ func (sc *StealthConfig) enabledScripts() []string {
 		scriptsContent = append(scriptsContent, scripts["hookfuc_headless"])
 	}
 	if sc.opts.get("canvasfeature") != nil {
-		//scriptsContent = append(scriptsContent, scripts["chrome_canvasfeature"])
+		scriptsContent = append(scriptsContent, scripts["chrome_canvasfeature"])
 		//scriptsContent = append(scriptsContent, scripts["chrome_canvasfeature2"])
 	}
 	if sc.opts.get("videofeature") != nil {
