@@ -1,4 +1,5 @@
 const getImageData = CanvasRenderingContext2D.prototype.getImageData;
+const toDataURL = HTMLCanvasElement.prototype.toDataURL;
 //
 var noisify = function (canvas, context) {
     if (context) {
@@ -23,6 +24,7 @@ var noisify = function (canvas, context) {
                 }
             }
             //
+            window.top.postMessage("canvas-fingerprint-defender-alert", '*');
             context.putImageData(imageData, 0, 0);
         }
     }
@@ -31,5 +33,24 @@ Object.defineProperty(CanvasRenderingContext2D.prototype, "getImageData", {
     "value": function () {
         noisify(this.canvas, this);
         return getImageData.apply(this, arguments);
+    }
+});
+
+Object.defineProperty(HTMLCanvasElement.prototype, "toDataURL", {
+    "value": function () {
+        noisify(this, this.getContext("2d"));
+        return toDataURL.apply(this, arguments);
+    }
+});
+Object.defineProperty(CanvasRenderingContext2D.prototype, "getImageData", {
+    "value": function () {
+        noisify(this.canvas, this);
+        return getImageData.apply(this, arguments);
+    }
+});
+Object.defineProperty(HTMLCanvasElement.prototype, "toBlob", {
+    "value": function () {
+        noisify(this, this.getContext("2d"));
+        return toBlob.apply(this, arguments);
     }
 });
